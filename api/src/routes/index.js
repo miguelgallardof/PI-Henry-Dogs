@@ -51,8 +51,11 @@ router.get("/dogs/:name", async (req, res) => {
   );
   dogParams
     ? res.status(200).send(dogParams)
-    : res.status(404).send("El perro no está dentro del parámetro");
+    : res
+        .status(404)
+        .send("El perro no se encuentra dentro del parámetro ingresado");
 });
+
 router.get("/temperament", async (req, res) => {
   let getDbInfo = await Temperament.findAll();
   if (getDbInfo.length > 0) {
@@ -66,6 +69,7 @@ router.get("/temperament", async (req, res) => {
           .json({ error: "No se ha obtenido información del temperamento" });
   }
 });
+
 router.post("/dog", async (req, res) => {
   const { name, weight, height, life_span, temperament } = req.body;
   let image = req.body.image;
