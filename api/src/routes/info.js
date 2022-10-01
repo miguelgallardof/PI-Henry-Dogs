@@ -64,6 +64,7 @@ const getAllInfo = async () => {
       let element = el.temperament;
       let temperament = element.split(",");
       let tempMap = temperament.map((el) => {
+        // se hace un map porque lo que se devuelven son varios temperamentos
         return { name: el };
       });
       el.temperament = tempMap;
@@ -133,11 +134,11 @@ const post = async (name, weight, height, life_span, temperament, image) => {
     image: image,
     createdinDb: true,
   });
-  let TemperamentDB = await Temperament.findAll({
+  let TemperamentDb = await Temperament.findAll({
     where: { name: temperament },
   });
 
-  return await newDog.addTemperament(TemperamentDB);
+  return await newDog.addTemperament(TemperamentDb);
 };
 
 module.exports = { getApiInfo, getAllInfo, totalInfo, getTemp, post };
