@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; // Hook que reemplaza a mapDispatchToProps, mapStateToProps
 import { getDogs } from "../actions";
 import { Link } from "react-router-dom";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 export default function Home() {
   const dispatch = useDispatch();
